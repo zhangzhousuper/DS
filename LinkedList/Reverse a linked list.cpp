@@ -80,18 +80,21 @@ struct Node {
 // Should reverse list and return new head.
 Node* reverseList(Node *head)
 {
-    Node* temp = head;
-    Node* prev = NULL;
-    Node* N = NULL;
-   
-    
-    while (temp != NULL)
-    {
-        N = temp->next;
-        temp->next = prev;
-        prev = temp;
-        temp = N;
-    }
-    return prev;
+   Node* current = head; 
+   Node *prev = NULL, *next = NULL; 
+  
+   while (current != NULL) 
+   { 
+   // Store next 
+   next = current->next; 
+  
+   // Reverse current node's pointer 
+   current->next = prev; 
+  
+   // Move pointers one position ahead. 
+   prev = current; 
+   current = next; 
+   } 
+   head = prev; 
   // Your code here
 }
